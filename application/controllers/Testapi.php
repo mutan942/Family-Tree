@@ -13,10 +13,18 @@ class Testapi extends RestController {
 
     public function users_get()
     {
+        $root = $this->db->query("SELECT * FROM orang WHERE `parent`=0")->result_array();
+        $ggg = [];
+        $group = $this->db->query("SELECT * FROM orang WHERE `parent` != 0 GROUP BY `parent`")->result_array();
+        foreach($group as $g){
+            $people = $this->db->get_where("orang",["parent"=>$g['parent']])->result_array();
+            $ggg[$g['parent']] = $people;
+        }
         $data = $this->get("id");
         $this->response([
             "status" => true,
-            "status" => "Berhasil ".$data
+            "root" => $root,
+            "child" => $ggg
         ],200);
     }
 }

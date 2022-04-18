@@ -1,3 +1,6 @@
+# Testing API
+METHOD (GET) : http://localhost/codeigniter/silsilah/testapi/users
+
 # CodeIgniter RestServer
 
 [![StyleCI](https://github.styleci.io/repos/230589/shield?branch=master)](https://github.styleci.io/repos/230589)
